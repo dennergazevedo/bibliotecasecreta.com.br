@@ -1,0 +1,21 @@
+O projeto atual é um projeto NEXT vazio, vamos construir juntos um aplicativo que vai se chamar Biblioteca Secreta.
+
+A Biblioteca Secreta é um aplicativo que permite aos usuários acessar a sua conta, cadastrar seus livros já lidos, livros favoritos, temas de interesse e etc. Com ajuda de uma LLM e com base nos livros já lidos, temas favoritos e livros favoritos do usuário o app terá funcionalidades que irá sugerir livros para leitura.
+
+Para iniciar nosso aplicativo, primeiro vamos definir algumas regras e definições
+
+Definições do projeto:
+1. O projeto usa pnpm;
+2. O projeto usa Tailwind CSS;
+3. O projeto usa Prettier com prettier-plugin-tailwindcss;
+4. O projeto deve ser inteiro Typescript;
+5. Vamos usar o route.ts do next como middleware;
+6. O projeto deve usar Shadcn UI para componentes disponíveis;
+7. O projeto deve ser estruturado no padrão Atomic Design;
+8. O projeto vai usar um banco de dados Postgres com uma plataforma que chama Neon. (A string de coneção está definida no arquivo .env com o nome NEON_DB_STRING_CONNECTION)
+9. A autenticação do projeto deve ser feita com JWT e cookies HTTP Only
+10. Sempre que possível reutilize código e você poderá armazenar funções reutilizáveis no /app/shared
+11. Sempre que for necessário definir/alterar tabelas do banco de dados, crie/atualize o esquema no arquivo app/db/{{fileName}}.sql
+12. A API Key da OpenAI está definida no arquivo .env com o nome OPEN_AI_API_KEY
+
+Crie um arquivo CLAUDE.md com todas essas definições e faça as configurações iniciais do projeto (OpenAI, Neon)

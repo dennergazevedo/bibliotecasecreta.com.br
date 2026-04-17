@@ -1,0 +1,33 @@
+Agora vamos para o GetStarted do usuário, essa parte será um pouco mais complexa.
+
+O usuário recém cadastrado passará por um fluxo de get started onde ele poderá configurar suas preferências e começar a explorar a biblioteca secreta.
+
+Esses são os dados coletados no formato de step assim que ele fizer o primeiro login:
+
+Importante:
+* Adicione um campo no usuário para armazenar se ele já passou (ou deu skip) pelo get started.
+* Crie a opção de skip para os 3 steps abaixo, com um botão (preencher depois)
+
+1. Usuário escolhe os temas favoritos de leitura, deixe uma lista com alguns temas mais comuns mas deixe a possibilidade dele escrever um tema que não existe na lista.
+2. Usuário preenche os livros já lidos, inicialmente exiba um input onde ele poderá começar a digitar o título do livro.
+    - Vamos usar a biblioteca de livros do google no Book API e a API Key está no arquivo .env com o nome GOOGLE_CLOUD_BOOK_API_KEY
+    - Crie um endpoint para busca de livros, esse endpoint deve receber o titulo do livro como parametro e deve buscar o livro primeiramente no banco de dados Neon (Crie uma tabela Books) e, se não encontrar, buscar na API do Google Books. O endpoint deve retornar as informações do livro encontrado.
+    - Caso o livro não seja encontrado em nenhum dos dois lugares dê a possibilidade do usuário adicionar um livro na tabela Books, mas esse livro deve ir como active = false, para que esse livro não seja exibido para outros usuários, até que algum administrador aceite o livro enviado.
+    - O Google Books tem imagem de capa do livro, exiba essa imagem junto com as informações do livro encontrado.
+    - Para upload de imagens de livros que os usuários vão criar vamos usar a biblioteca Cloudinary, ja criei as variáveis de ambiente no arquivo .env com o nome CLOUDINARY_NAME, CLOUDINARY_KEY e CLOUDINARY_SECRET.
+    - Cada vez que livros forem retornados da API do Google Books, adicione esse livro (se não existir) na tabela books do projeto, adicione um campo para identificar que é um livro retornado da API do Google Books.
+    - Informações importantes para a tabela books: image_url, affiliated_link (para comissão e irei preencher manual depois), foreign_id (caso for do google book), title, author, image_url, genre, published_date, page_count, description.
+    - Adicione um debounce no input da busca para evitar buscas excessivas à API do Google Books/postgres a cada tecla pressionada.
+3. Dentre os livros que o usuário selecionou peça ele para selecionar no máximo 5 livros como livros favoritos.
+
+Após os 3 steps o usuário é direcionado para a página /dashboard (Não crie ela ainda, mantenha como está)
+Cada step deve preencher a tela completamente, com um botão de avançar na parte inferior da tela assim que o usuário cumprir o requisito necessário do step.
+
+Requisitos:
+1. Escolher pelo menos 3 temas favoritos
+2. Preencher livros lidos (ou dar skip / preencher depois)
+3. Só exibe caso o usuário tenha selecionado livros lidos no step 2 e não é obrigatório, ele pode simplesmente continuar para o dashboard.
+
+Extras:
+1. Mesmo se retornar livros na busca do usuário, o usuário pode adicionar o livro pois o livro mencionado pode não estar na busca, para isso adicione um botão: "Não encontrei o meu livro" que o usuário pode clicar para adicionar o livro manualmente.
+2. A busca no "Quais livros você já leu" deve ser parcial, ou seja, o usuário não precisa digitar o nome completo do livro, se possível extenda a busca (sem adicionar requests extras) pelo nome do Autor.

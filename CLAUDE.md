@@ -16,7 +16,7 @@
 
 ## Estrutura de Arquivos
 
-- **Atomic Design:** componentes em `app/components/{atoms,molecules,organisms,templates}`
+- **Atomic Design:** componentes em `components/{atoms,molecules,organisms,templates}` (raiz do projeto, ao lado de `components/ui/` do Shadcn). O alias `@/` aponta para `./` (raiz), logo `@/components/atoms/Foo` funciona diretamente.
 - **Código reutilizável:** funções e utilitários em `app/shared/`
 - **API Routes:** usar `route.ts` do Next.js (nunca criar um servidor separado)
 - **Schemas SQL:** criar/atualizar em `app/db/{{fileName}}.sql` sempre que alterar tabelas

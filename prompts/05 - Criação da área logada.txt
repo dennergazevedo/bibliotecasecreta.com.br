@@ -1,0 +1,38 @@
+Agora vamos criar o core da aplicação que será a página /dashboard.
+Essa página vai ter 4 principais seções:
+
+1. Dica diária com base em livros favoritos, temas favoritos e o mood do dia (1 único livro por dia)
+2. Dica diária com base em livros e temas favoritos (3 livros por dia)
+3. Mais lidos da plataforma (Top 5 livros mais lidos, ou seja, que mais apareceram como lidos entre os usuários)
+4. Sugestões de leitura - 5 Livros que a plataforma recomenda para você (Deixe fixo no código hardcoded por enquanto)
+
+Importante:
+* Sempre exiba a caba do livro nos componentes de sugestões.
+* As sugestões de leitura devem ser salvas para que não sejam exibidas sugestões repetidas para os usuários na mesma semana, ou seja, além de salvar sugestões, sempre que uma sugestão for gerada, se ele atingir o limite de sugestões, você deve apagar sugestões antigas com base na regra de cada uma das seções.
+* As sugestões serão feitas por IA usando o modelo GPT Mini da Open AI e a API KEY ja está cadastrada no .env com o nome de OPEN_AI_API_KEY.
+* Se a IA sugerir um livro que não esteja disponível nem no Banco de dados e nem no Google Books API, você deve criar o livro no Banco de dados com os dados disponíveis e deixar sem foto,
+* Crie um componente que exibe no lugar com o mesmo formato da capa escrito (SEM CAPA), vamos reutilizar esse componente todas as vezes que for exibir uma capa de um livro e ela não existir.
+
+Agora vamos detalhar cada uma das seções:
+1. A dica diária deve exibir primeiramente uma opção para o usuário escolher qual é o mood dele (feliz, triste, bravo, etc.) e então exibir uma dica diária com base nos livros favoritos, generos favoritos e o mood do dia.
+
+Importante:
+* O type desse tipo de sugestão é "mood"
+* Para apagar a sugestão mais antiga use a regra: Caso o usuário tenha 7 ou mais sugestões cadastradas com o type = "mood", a sugestão mais antiga deve ser apagada automaticamente quando uma nova sugestão for gerada.
+* Para a sugestão envie o título e autor dos livros favoritos, os generos favoritos, o mood do dia e o titulo das sugestões anteriores (type = "mood").
+
+2. Essa dica deve ser solicitada pra IA e exibida assim que a página for carregada, utilize um skeleton do mesmo formato enquanto carrega.
+
+Importante:
+* O type desse tipo de sugestão é "daily"
+* Para apagar a sugestão mais antiga use a regra: Caso o usuário tenha 21 ou mais sugestões cadastradas com o type = "daily", as 3 sugestões mais antigas devem ser apagadas automaticamente quando uma nova sugestão for gerada.
+* Para a sugestão envie o título e autor dos livros favoritos, os generos favoritos e os títulos das sugestões anteriores (type = "daily").
+
+3. Pegue os 5 livros que mais aparecem como lidos no banco de dados e exiba-os, em caso de empate exiba o que retornar primeiro.
+
+4. Deixe fixo no código livros aleatórios sem capa, depois irei preencher manualmente.
+
+Extra:
+- Quando for criar o prompt que será enviado para a IA dar as sugestões, solicite que ela retorne os campos já no formato JSON esperado pelo nosso banco de dados.
+- Quando a IA retornar o livro, busque o titulo do livro no banco de dados / Google Books API para não duplicar cadastros de livros, caso não encontre o livro ai sim vamos fazer o cadastro sem a capa.
+- Caso a IA faça uma sugestão do livro e no banco de dados tiver por exemplo: `{{Titulo Sugerido}} - Parte 2`, priorize o livro que já temos cadastrado na plataforma e não crie um novo registro, em outras palavras, se a IA sugerir um título que temos cadastrado mesmo que não seja identico o nome (livros parte 2, editora XYZ e etc), priorize o livro ja cadastrado.

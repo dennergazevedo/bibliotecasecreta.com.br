@@ -1,0 +1,12 @@
+Agora vamos lidar com a autenticação da plataforma, ja foi criada a tabela de usuários na Neon.
+
+Definições de autenticação:
+1. Crie uma página /auth com formulário de login e registro.
+2. Adicione autenticação via JWT (JSON Web Tokens)
+3. Se o usuário estiver autenticado o botão de "Área do leitor" deve direcionar para /dashboard, se não direciona para /auth.
+4. Crie a página /dashboard mas não implemente ainda.
+
+Ajustes:
+1. Remova o framer-motion do Header e do Hero, pois está causando CLS na página e lentidão no carregamento.
+2. Adicione cursor default nos cards
+3. Adicione cursor pointer nos accordions

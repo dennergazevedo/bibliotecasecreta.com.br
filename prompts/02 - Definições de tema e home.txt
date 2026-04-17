@@ -1,0 +1,63 @@
+Vamos começar a desenvolver o app pela página inicial (Homepage).
+
+Definições extras do projeto:
+1. Utilize framer-motion para animar os componentes e deixar a página mais interativa;
+2. O tema do projeto deve ser light seguindo a paleta de cores café;
+
+Definições iniciais:
+1. A paleta de cores deve seguir cores voltadas para o café;
+2. Novas cores devem ser definidas como variáveis no tailwind;
+3. Sempre que possível utilize cores nativas do tailwind;
+4. Utilize o arquivo Layout.tsx para definir o layout padrão do projeto;
+
+Definições da página inicial:
+1. Crie um hero chamativo sobre o universo dos livros e uma jornada literária com entusiasmo;
+2. Adicione uma animação no background do hero;
+3. Crie uma seção de "O que é a Biblioteca Secreta" com uma descrição detalhada do que o app oferece;
+4. Crie uma seção com a informação de "Compre os livros mais populares na Biblioteca Secreta na Amazon e ajude-nos a ficar online"
+5. Crie uma seção de transformação da experiência de Leitura:
+Antes da Biblioteca Secreta
+- Dificuldade em encontrar novos livros interessantes
+- Tempo perdido com livros que não te cativam
+- Falta de motivação para ler regularmente
+- Sensação de isolamento na sua jornada literária
+
+Depois da Biblioteca Secreta
+- Descobertas emocionantes a cada recomendação
+- Leituras que combinam perfeitamente com seu gosto
+- Hábito de leitura consistente e prazeroso
+- Conexão com uma comunidade vibrante de leitores
+Melhore ou adicione tópicos de benefícios
+6. Crie uma seção de FAQ com perguntas frequentes sobre a Biblioteca Secreta, essas são algumas perguntas e respostas iniciais:
+question="Como funciona a sugestões de livros?"
+answer="Nosso algoritmo usa inteligência artificial para entender suas preferências literárias, oferecendo sugestões personalizadas com base no seu histórico de leituras e interesses. Quanto mais você interagir, mais precisas serão as sugestões."
+
+question="Quais são as vantagens do plano Premium em relação ao plano Grátis?"
+answer="O plano Premium oferece sugestões ilimitadas, recursos exclusivos como resumos inteligentes e consultoria literária personalizada. Já o plano Grátis permite apenas uma sugestão por semana, ideal para quem está começando a explorar o serviço."
+
+question="Posso cancelar a assinatura a qualquer momento?"
+answer="No Biblioteca Secreta, trabalhamos com planos pré-pagos, ou seja, não há assinaturas recorrentes. Você pode optar por assinar por um único mês ou aproveitar nossas promoções e comprar pacotes de meses, com a flexibilidade de não ter cobranças automáticas no futuro. Caso opte por um pacote, você terá acesso ao serviço até o fim do período contratado, sem necessidade de renovação automática."
+
+question="Como os descontos em livros recomendados funcionam?"
+answer="Quando uma sugestão de livro for feita, você terá acesso a descontos exclusivos através de links afiliados. No entanto, vale lembrar que nem todos os livros recomendados terão descontos especiais, pois isso depende das promoções disponíveis. Mesmo assim, você sempre terá acesso a ofertas vantajosas para as obras sugeridas, ajudando você a adquirir livros com um preço especial, além de apoiar o nosso serviço."
+
+question="Posso obter resumos de livros antes de comprá-los?"
+answer="Sim! Para os assinantes do plano Premium, oferecemos resumos inteligentes de livros recomendados, ajudando você a decidir se aquele livro vale a pena antes de fazer a compra."
+
+question="Como posso alterar meu plano ou fazer upgrades?"
+answer="Você pode facilmente alterar seu plano a qualquer momento, escolhendo um dos planos disponíveis acima. Atualmente Plano Premium oferece as vantagens mais completas, incluindo consultoria literária via IA e listas personalizadas baseadas no seu humor, além de sugestões ilimitadas e outros recursos exclusivos. Para fazer o upgrade, basta acessar sua conta e selecionar o plano desejado."
+
+question="Como posso alterar meu plano ou fazer upgrades?"
+answer="Sim, é necessário criar uma conta para construir seu perfil literário e receber sugestões personalizadas com base nos seus gostos. No entanto, você pode começar a explorar o serviço com o Plano Gratuito, que permite conhecer as sugestões e funcionalidades sem necessidade de pagamento. Dessa forma, você pode testar o serviço e decidir se deseja aproveitar as vantagens dos planos pagos."
+
+7. Crie um Header com um botão "Área do Leitor" e a Logo do site
+8. Crie um Footer com links para redes sociais e informações extras, crie uma coluna para Suporte com os links:
+- FAQ
+- Contato
+- Política de Privacidade
+- Termos de Uso
+Deixe o HREF como "#" temporariamente.
+Adicione no rodapé: "© ${new Date().getFullYear()} Biblioteca Secreta. Todos os direitos reservados."
+
+9. Crie seções e reorganize sempre que necessário, o site precisa ser organizado de forma clara e intuitiva para o usuário.
+10. O layout deve ser clean e minimalista, com foco na experiência do usuário e com a sensação de um ambiente tranquilo.
