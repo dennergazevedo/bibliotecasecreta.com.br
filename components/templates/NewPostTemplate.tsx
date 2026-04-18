@@ -39,7 +39,7 @@ export function NewPostTemplate({ userName }: NewPostTemplateProps) {
   return (
     <div className="min-h-screen bg-coffee-50 flex flex-col">
       <DashboardNav userName={userName} />
-      <main className="flex-1 container mx-auto w-full px-4 sm:px-6 py-8">
+      <main className="flex-1 container max-w-6xl mx-auto w-full px-4 sm:px-6 py-8">
         <div className="mb-6">
           <Link href="/comunidade" className="inline-flex items-center gap-1.5 text-sm text-coffee-500 hover:text-coffee-800 transition-colors mb-4">
             <ArrowLeft className="w-4 h-4" />Voltar
