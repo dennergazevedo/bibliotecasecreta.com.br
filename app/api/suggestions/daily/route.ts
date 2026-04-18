@@ -30,8 +30,8 @@ export async function GET(_request: NextRequest) {
     FROM user_suggestions s
     WHERE s.user_id = ${user.userId}
       AND s.type = 'daily'
-      AND s.created_at >= CURRENT_DATE
-      AND s.created_at < CURRENT_DATE + INTERVAL '1 day'
+      AND s.created_at >= date_trunc('day', now() AT TIME ZONE 'America/Sao_Paulo') AT TIME ZONE 'America/Sao_Paulo'
+      AND s.created_at < (date_trunc('day', now() AT TIME ZONE 'America/Sao_Paulo') + INTERVAL '1 day') AT TIME ZONE 'America/Sao_Paulo'
     ORDER BY s.created_at ASC
     LIMIT 3
   `) as SuggRow[]
@@ -130,7 +130,11 @@ Retorne APENAS um array JSON com exatamente 3 objetos, sem texto adicional:
   const books: Book[] = []
   for (const s of suggestions.slice(0, 3)) {
     if (!s.title) continue
-    const book = await resolveBook(s.title, s.author ?? null)
+    const book = await resolveBook(s.title, s.author ?? null, {
+      genre: s.genre,
+      description: s.description,
+      published_date: s.published_date,
+    })
     await sql`
       INSERT INTO user_suggestions (user_id, book_id, type)
       VALUES (${user.userId}, ${book.id}, 'daily')

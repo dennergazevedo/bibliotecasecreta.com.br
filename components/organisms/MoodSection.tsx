@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Heart, Loader2 } from "lucide-react"
 import { BookSuggestionCard, BookSuggestionCardSkeleton } from "@/components/molecules/BookSuggestionCard"
 import { type Book } from "@/app/shared/types"
@@ -19,7 +19,21 @@ const MOODS = [
 export function MoodSection() {
   const [selectedMood, setSelectedMood] = useState<string | null>(null)
   const [book, setBook] = useState<Book | null>(null)
+  const [initialLoading, setInitialLoading] = useState(true)
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    fetch("/api/suggestions/mood")
+      .then((r) => r.json())
+      .then((d: { book?: Book; mood?: string }) => {
+        if (d.book && d.mood) {
+          setBook(d.book)
+          setSelectedMood(d.mood)
+        }
+      })
+      .catch(() => {})
+      .finally(() => setInitialLoading(false))
+  }, [])
 
   const pickMood = async (mood: string) => {
     setSelectedMood(mood)
@@ -38,6 +52,8 @@ export function MoodSection() {
     }
   }
 
+  const moodObj = MOODS.find((m) => m.label === selectedMood)
+
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center gap-2">
@@ -46,28 +62,33 @@ export function MoodSection() {
           Como você está hoje?
         </h2>
       </div>
-      <p className="text-sm text-coffee-500 -mt-2">
-        Escolha seu mood e receba uma sugestão personalizada
-      </p>
 
-      <div className="flex flex-wrap gap-2">
-        {MOODS.map((m) => (
-          <button
-            key={m.label}
-            type="button"
-            onClick={() => pickMood(m.label)}
-            disabled={loading}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-full border text-sm font-medium transition-all duration-150 cursor-pointer disabled:opacity-50 ${
-              selectedMood === m.label
-                ? "bg-coffee-800 border-coffee-800 text-coffee-50"
-                : "bg-white border-coffee-200 text-coffee-700 hover:border-coffee-400"
-            }`}
-          >
-            <span>{m.emoji}</span>
-            {m.label}
-          </button>
-        ))}
-      </div>
+      {initialLoading && <BookSuggestionCardSkeleton />}
+
+      {!initialLoading && !selectedMood && (
+        <>
+          <p className="text-sm text-coffee-500 -mt-2">
+            Escolha seu mood e receba uma sugestão personalizada
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {MOODS.map((m) => (
+              <button key={m.label} type="button" onClick={() => pickMood(m.label)} disabled={loading}
+                className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-coffee-200 bg-white text-coffee-700 text-sm font-medium hover:border-coffee-400 transition-all duration-150 cursor-pointer disabled:opacity-50">
+                <span>{m.emoji}</span>{m.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+
+      {!initialLoading && selectedMood && (
+        <p className="text-sm text-coffee-600 font-medium -mt-2">
+          Hoje você está:{" "}
+          <span className="text-coffee-900">
+            {moodObj?.emoji} {selectedMood}
+          </span>
+        </p>
+      )}
 
       {loading && <BookSuggestionCardSkeleton />}
 
@@ -80,10 +101,10 @@ export function MoodSection() {
         </div>
       )}
 
-      {!loading && selectedMood && !book && (
+      {!loading && !initialLoading && selectedMood && !book && (
         <div className="flex items-center gap-2 text-sm text-coffee-500 py-2">
           <Loader2 className="w-4 h-4" />
-          Nenhuma sugestão disponível. Tente outro mood.
+          Nenhuma sugestão disponível.
         </div>
       )}
     </section>

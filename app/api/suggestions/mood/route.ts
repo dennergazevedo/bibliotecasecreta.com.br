@@ -14,6 +14,36 @@ type AISuggestion = {
   published_date?: string
 }
 
+export async function GET(_request: NextRequest) {
+  const cookieStore = await cookies()
+  const session = cookieStore.get(COOKIE_NAME)?.value
+  const user = session ? await getSessionUser(session) : null
+  if (!user) {
+    return NextResponse.json({ error: "Não autorizado." }, { status: 401 })
+  }
+
+  type TodayRow = { book_id: string; mood: string }
+  const rows = (await sql`
+    SELECT book_id, mood FROM user_suggestions
+    WHERE user_id = ${user.userId}
+      AND type = 'mood'
+      AND created_at >= date_trunc('day', now() AT TIME ZONE 'America/Sao_Paulo') AT TIME ZONE 'America/Sao_Paulo'
+      AND created_at < (date_trunc('day', now() AT TIME ZONE 'America/Sao_Paulo') + INTERVAL '1 day') AT TIME ZONE 'America/Sao_Paulo'
+    ORDER BY created_at DESC
+    LIMIT 1
+  `) as TodayRow[]
+
+  if (!rows[0]) return NextResponse.json({ book: null, mood: null })
+
+  const books = (await sql`
+    SELECT id, title, author, genre, published_date, page_count, description,
+           image_url, affiliated_link, foreign_id, is_google_books, active
+    FROM books WHERE id = ${rows[0].book_id} LIMIT 1
+  `) as Book[]
+
+  return NextResponse.json({ book: books[0] ?? null, mood: rows[0].mood })
+}
+
 export async function POST(request: NextRequest) {
   const cookieStore = await cookies()
   const session = cookieStore.get(COOKIE_NAME)?.value
@@ -109,7 +139,11 @@ Retorne APENAS um objeto JSON, sem texto adicional:
     return NextResponse.json({ error: "Sugestão inválida." }, { status: 500 })
   }
 
-  const book = await resolveBook(suggestion.title, suggestion.author ?? null)
+  const book = await resolveBook(suggestion.title, suggestion.author ?? null, {
+    genre: suggestion.genre,
+    description: suggestion.description,
+    published_date: suggestion.published_date,
+  })
   await sql`
     INSERT INTO user_suggestions (user_id, book_id, type, mood)
     VALUES (${user.userId}, ${book.id}, 'mood', ${mood})

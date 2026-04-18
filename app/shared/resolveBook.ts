@@ -21,7 +21,13 @@ type GoogleBooksVolume = {
  */
 export async function resolveBook(
   suggestedTitle: string,
-  suggestedAuthor: string | null
+  suggestedAuthor: string | null,
+  aiMeta?: {
+    genre?: string | null
+    description?: string | null
+    published_date?: string | null
+    page_count?: number | null
+  }
 ): Promise<Book> {
   const like = "%" + suggestedTitle + "%"
 
@@ -73,6 +79,10 @@ export async function resolveBook(
             title = EXCLUDED.title,
             author = EXCLUDED.author,
             image_url = EXCLUDED.image_url,
+            genre = COALESCE(books.genre, EXCLUDED.genre),
+            published_date = COALESCE(books.published_date, EXCLUDED.published_date),
+            page_count = COALESCE(books.page_count, EXCLUDED.page_count),
+            description = COALESCE(books.description, EXCLUDED.description),
             updated_at = now()
           RETURNING id, title, author, genre, published_date, page_count, description, image_url, affiliated_link, foreign_id, is_google_books, active
         `) as Book[]
@@ -83,9 +93,14 @@ export async function resolveBook(
     // fall through to manual create
   }
 
+  const fallbackGenre = aiMeta?.genre ?? null
+  const fallbackDesc = aiMeta?.description ?? null
+  const fallbackDate = aiMeta?.published_date ?? null
+  const fallbackPages = aiMeta?.page_count ?? null
+
   const rows = (await sql`
-    INSERT INTO books (title, author, active, is_google_books)
-    VALUES (${suggestedTitle}, ${suggestedAuthor}, true, false)
+    INSERT INTO books (title, author, genre, published_date, page_count, description, active, is_google_books)
+    VALUES (${suggestedTitle}, ${suggestedAuthor}, ${fallbackGenre}, ${fallbackDate}, ${fallbackPages}, ${fallbackDesc}, true, false)
     RETURNING id, title, author, genre, published_date, page_count, description, image_url, affiliated_link, foreign_id, is_google_books, active
   `) as Book[]
   return rows[0]
