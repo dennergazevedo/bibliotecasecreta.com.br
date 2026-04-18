@@ -1,0 +1,30 @@
+Vamos dar um upgrade no /dashboard e adicionar algumas funcionalidades simples (CRUD)
+
+1. Crie uma página /minha-biblioteca que exiba todos os livros que o usuário já leu.
+    - Adicione um coração filled nos livros que são favoritos e um coração outline nos livros que não são favoritos. Se o usuário clicar no coração, o livro deve ser marcado como favorito ou desmarcado.
+    - Exiba apenas 12 livros (colunas de 4 no desktop e de 1 no mobile) e um botão de "mostrar mais" para carregar mais livros caso o usuário tenha mais de 12 livros lidos.
+    - Abaixo dos livros lidos crie uma seção: "Sugestões da Biblioteca Secreta", com todas as sugestões de livros que o usuário já teve (user_suggestions)
+    - Adicione um botão "Adicionar Livro" que abre um modal para o usuário adicionar um novo livro à sua biblioteca, sempre seguindo a regra de: Buscar no Banco de dados, google books e se não encontrar (Ou se encontrar e o usuário preferir), exibir um formulário para o usuário preencher manualmente
+2. Crie uma página /comunidade que exiba algo semelhante à um forum, onde os usuários podem postar mensagens e interagir com outros membros.
+    - Essa comunidade vão ter posts e comentários, o post deve ter um título e um conteúdo.
+    - Os comentários são exibidos dentro de cada post no final da página.
+    - Os comentários devem ser paginados exibindo apenas os 5 primeiros e um botão "mostrar mais comentários" para carregar os próximos caso exista.
+    - Deve ter um botão "Criar post" que direciona para uma página de criação de postagem (que deve ser atralada ao usuário)
+    - A página de criação de postagem deve ter um formulário com campos para o título e o conteúdo do post, e um botão "Publicar" para salvar o post.
+    - O lugar onde o usuário preenche o conteúdo deve ser um editor de texto (textarea) que suporte formatação (markdown) para permitir que o usuário escreva o conteúdo do post de forma mais rica.
+    - Não permita que o usuário coloque imagens no conteúdo do post.
+    - Na página que exibe os posts o conteúdo deve ser exibido de maneira amigável (markdown renderizado)
+    - A página inicial da comunidade deve exibir no formato de lista, um post abaixo do outro e também paginado, 12 posts e um botão de "Mostrar mais" para carregar mais posts.
+    - Adicione uma barra de pesquisa por post, utilize o título como base para a busca.
+
+Importante:
+* Troque o título da página "/dashboard" de "Minha biblioteca" para "Bem vindo(a)! a Biblioteca Secreta!"
+* A seção de mais lidos da plataforma e sugestões de leitura da página /dashboard devem ser uma em baixo da outra (atualmente está uma ao lado da outra no desktop)
+* Crie um menu de navegação no topo da página com links para as outras páginas da plataforma, no mobile use menu burguer com um drawer animado
+* Caso o livro tenha um affiliated_link vinculado, exiba um botão "Comprar" que direciona para o link do afiliado em uma outra aba, esse botão deve ser discreto e não obstruir a visualização do conteúdo.
+
+Extras:
+* Quando o usuário selecionar o mood na página /dashboard e exibir a sugestão de livro remova a opção dele selecionar um novo mood e deixe uma infomação: Hoje você está: {{escolha do usuário}}
+* Quando um usuário clicar num card de um livro, exiba um modal com mais detalhes sobre o livro: titulo, autor, descrição, botão de comprar (se houver affiliate_link)
+* Adicione o cursor-pointer nos cards dos livros clicáveis.
+* Adicione um link na logo para direcionar a pessoa para a homepage da plataforma.

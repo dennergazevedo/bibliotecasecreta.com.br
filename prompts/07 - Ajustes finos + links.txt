@@ -1,0 +1,25 @@
+Vamos à alguns ajustes finos:
+
+1. Os livros que vem da sugestão e são cadastrados estão vindo sem dados importantes como descrição, data de lançamento e numero aproximado de páginas.
+2. Altere o componente de Menu Burguer para abrir da direita para esquerda (atualmente está da esquerda para a direita)
+3. Se o usuário já tiver uma sugestão de mood diário ou das sugestões type="daily", quando a página for carregada, exiba a sugestão e mood pré selecionado no dia (created_at) e não faça outra request / sugestão. (Isso serve para todos componentes de sugestões)
+4. Na página /minha-biblioteca no desktop em vez de 4 livros por linha nos "Livros lidos" deixe como 6 por linha.
+5. No desktop vamos usar a classe "container" do Tailwind CSS para centralizar o conteúdo e deixe o tamanho máximo como max-w-6xl. E todo bloco da página deve ter 100% do container, mesmo que não seja necessário.
+6. Traga o footer para a área logada, para que nas páginas dentro da plataforma também tenha o footer renderizado no final da página.
+7. Adicione o link /auth no botão "Comece sua jornada" do hero na pagina inicial
+8. Adicione uma ancora no botão "Saiba mais" do hero para a seção "O que é" na página inicial
+9. No footer
+    - remova o link "Contato"
+    - No FAQ adicione uma ancora para a home na seção de Perguntas frequentes ("/#faq" ou algo assim)
+    - Politicas de Privacidade para /politicas-de-privacidade
+    - Termos de Uso para /termos-de-uso
+10. As páginas políticas de privacidade e termos de uso foram importadas de outro projeto, mantenha as informações e organizações, mas utilize o layout atual do site (footer, header, padrão de cores e etc).
+11. O botão "Criar conta gratuita" deve redirecionar para /auth
+12. O footer os icones de redes sociais deve ser:
+    - Github: https://github.com/dennergazevedo
+    - Linkedin: https://www.linkedin.com/in/dnnr
+    - Website: https://dnnr.dev
+    - Youtube: https://www.youtube.com/@devdenegociosmg
+13. Remova todas referencias de Amazon, deixe sem especificar qual é o parceiro.
+14. Remova o botão "Como funciona o programa"
+15. O botão "Ver livros populares" na home coloque o link do Mercado Livre: https://meli.la/12idEqh e mude o nome do link para: "Acessar link do parceiro"
