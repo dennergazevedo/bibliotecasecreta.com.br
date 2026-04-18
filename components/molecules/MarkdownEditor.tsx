@@ -3,7 +3,7 @@
 import { useState, useRef } from "react"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
-import { Bold, Italic, Heading2, Code, Quote, List } from "lucide-react"
+import { Bold, Italic, Heading2, Code, Quote, List, CodeXml } from "lucide-react"
 
 interface MarkdownEditorProps {
   value: string
@@ -24,9 +24,10 @@ const TOOLBAR: ToolbarAction[] = [
   { icon: Bold, label: "Negrito", before: "**", after: "**", placeholder: "texto em negrito" },
   { icon: Italic, label: "Itálico", before: "_", after: "_", placeholder: "texto em itálico" },
   { icon: Heading2, label: "Título", before: "## ", after: "", placeholder: "título" },
-  { icon: Code, label: "Código", before: "`", after: "`", placeholder: "código" },
-  { icon: Quote, label: "Citação", before: "> ", after: "", placeholder: "citação" },
-  { icon: List, label: "Lista", before: "- ", after: "", placeholder: "item" }
+  { icon: Code, label: "Código", before: "`", after: "`", placeholder: "" },
+  { icon: CodeXml, label: "Bloco de código", before: "```", after: "```", placeholder: "código aqui" },
+  { icon: Quote, label: "Citação", before: "> ", after: "", placeholder: "" },
+  { icon: List, label: "Lista", before: "- ", after: "", placeholder: "" }
 ]
 
 export function MarkdownEditor({
@@ -104,7 +105,7 @@ export function MarkdownEditor({
       {tab === "preview" && (
         <div className="px-4 py-3 min-h-40 bg-white">
           {value.trim() ? (
-            <div className="prose prose-sm max-w-none text-coffee-900 prose-headings:font-heading prose-a:text-coffee-700">
+            <div className="post-content max-w-none">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{ img: () => null }}

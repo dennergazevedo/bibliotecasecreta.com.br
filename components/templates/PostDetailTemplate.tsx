@@ -66,7 +66,7 @@ export function PostDetailTemplate({
   return (
     <div className="min-h-screen bg-coffee-50 flex flex-col">
       <DashboardNav userName={userName} />
-      <main className="flex-1 container mx-auto w-full px-4 sm:px-6 py-8 flex flex-col gap-8">
+      <main className="flex-1 container max-w-6xl mx-auto w-full px-4 sm:px-6 py-8 flex flex-col gap-8">
         <div>
           <Link href="/comunidade" className="inline-flex items-center gap-1.5 text-sm text-coffee-500 hover:text-coffee-800 transition-colors mb-5">
             <ArrowLeft className="w-4 h-4" />Voltar para a comunidade
@@ -80,7 +80,7 @@ export function PostDetailTemplate({
 
         {/* Post content */}
         <div className="rounded-2xl bg-white border border-coffee-200 p-6">
-          <div className="prose prose-sm max-w-none text-coffee-800 prose-headings:font-heading prose-headings:text-coffee-900 prose-a:text-coffee-700 prose-strong:text-coffee-900 prose-code:bg-coffee-100 prose-code:px-1 prose-code:rounded">
+          <div className="post-content max-w-none">
             <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ img: () => null }}>
               {post.content}
             </ReactMarkdown>
