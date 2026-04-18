@@ -21,7 +21,7 @@ export function AmazonSection() {
         </div>
 
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-coffee-50 mb-4 leading-tight">
-          Compre livros populares na Amazon e{" "}
+          Compre livros com nosso link e{" "}
           <span className="italic text-coffee-gold">
             ajude-nos a ficar online
           </span>
@@ -29,7 +29,7 @@ export function AmazonSection() {
 
         <p className="text-coffee-400 max-w-2xl mx-auto text-base leading-relaxed mb-10">
           Quando você compra um livro sugerido pela Biblioteca Secreta através
-          dos nossos links afiliados, uma pequena comissão vai para nós — sem
+          dos nossos links de parceiros, uma pequena comissão vai para nós — sem
           nenhum custo extra para você. É a forma mais simples de apoiar o
           projeto e continuar recebendo recomendações incríveis.
         </p>
@@ -48,18 +48,12 @@ export function AmazonSection() {
 
         <div className="pt-8 border-t border-coffee-800 flex flex-col sm:flex-row gap-3 justify-center">
           <a
-            href="#"
+            href="https://meli.la/12idEqh"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-full bg-coffee-gold hover:bg-coffee-400 text-coffee-900 px-8 h-12 text-sm font-semibold transition-colors duration-200"
           >
-            Ver livros populares na Amazon
-          </a>
-          <a
-            href="#"
-            className="inline-flex items-center justify-center rounded-full text-coffee-400 hover:text-coffee-100 hover:bg-coffee-800 px-8 h-12 text-sm transition-colors duration-200"
-          >
-            Como funciona o programa
+            Acessar link do parceiro
           </a>
         </div>
       </motion.div>

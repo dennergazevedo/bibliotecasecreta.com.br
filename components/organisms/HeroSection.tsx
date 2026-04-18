@@ -83,13 +83,13 @@ export function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
-            href="#"
+            href="/auth"
             className="inline-flex items-center justify-center rounded-full bg-coffee-800 hover:bg-coffee-900 text-coffee-50 px-8 h-12 text-sm font-medium transition-colors duration-200"
           >
             Comece sua jornada
           </a>
           <a
-            href="#"
+            href="#o-que-e"
             className="inline-flex items-center justify-center rounded-full border border-coffee-300 text-coffee-700 hover:bg-coffee-100 hover:border-coffee-400 px-8 h-12 text-sm font-medium transition-colors duration-200"
           >
             Saiba mais
