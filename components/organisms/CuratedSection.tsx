@@ -11,7 +11,7 @@ const CURATED_BOOKS: Omit<Book, "affiliated_link" | "foreign_id" | "is_google_bo
     published_date: "1988",
     page_count: 208,
     description: "Um jovem pastor andaluz parte em busca de um tesouro e descobre o verdadeiro significado da vida.",
-    image_url: null
+    image_url: "https://res.cloudinary.com/du0gxai9y/image/upload/v1776532314/alquimista_jypkas.jpg"
   },
   {
     id: "curated-2",
@@ -21,7 +21,7 @@ const CURATED_BOOKS: Omit<Book, "affiliated_link" | "foreign_id" | "is_google_bo
     published_date: "1967",
     page_count: 448,
     description: "A saga da família Buendía ao longo de sete gerações na mítica cidade de Macondo.",
-    image_url: null
+    image_url: "https://res.cloudinary.com/du0gxai9y/image/upload/v1776532314/cem_anos_yfgitk.jpg"
   },
   {
     id: "curated-3",
@@ -31,7 +31,7 @@ const CURATED_BOOKS: Omit<Book, "affiliated_link" | "foreign_id" | "is_google_bo
     published_date: "1949",
     page_count: 328,
     description: "Uma distopia sombria sobre vigilância, controle e a resistência do espírito humano.",
-    image_url: null
+    image_url: "https://res.cloudinary.com/du0gxai9y/image/upload/v1776532314/1984_sytt20.jpg"
   },
   {
     id: "curated-4",
@@ -41,7 +41,7 @@ const CURATED_BOOKS: Omit<Book, "affiliated_link" | "foreign_id" | "is_google_bo
     published_date: "1899",
     page_count: 256,
     description: "Um dos maiores clássicos da literatura brasileira, sobre amor, ciúme e memória.",
-    image_url: null
+    image_url: "https://res.cloudinary.com/du0gxai9y/image/upload/v1776532313/dom_casmurro_ljxntb.webp"
   },
   {
     id: "curated-5",
@@ -51,7 +51,7 @@ const CURATED_BOOKS: Omit<Book, "affiliated_link" | "foreign_id" | "is_google_bo
     published_date: "1943",
     page_count: 96,
     description: "Um conto poético sobre amizade, amor e o que os olhos não conseguem ver.",
-    image_url: null
+    image_url: "https://res.cloudinary.com/du0gxai9y/image/upload/v1776532314/pequeno_principe_dchd1e.jpg"
   }
 ]
 
