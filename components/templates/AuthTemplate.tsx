@@ -88,7 +88,7 @@ export function AuthTemplate() {
   }
 
   const inputClass =
-    "w-full px-4 py-3 rounded-xl border border-coffee-200 bg-white text-coffee-900 placeholder:text-coffee-400 focus:outline-none focus:ring-2 focus:ring-coffee-gold/40 focus:border-coffee-400 transition-colors text-sm"
+    "w-full px-4 py-3 rounded-xl border border-coffee-200 bg-white text-coffee-900 placeholder:text-coffee-400 focus:outline-none focus:ring-2 focus:ring-coffee-gold/40 focus:border-coffee-400 transition-colors text-base"
 
   return (
     <div className="min-h-screen flex">
