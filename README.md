@@ -332,4 +332,4 @@ components/
 
 ## Licença
 
-Projeto privado — todos os direitos reservados.
+Distribuído sob a licença MIT. Veja [LICENSE](LICENSE) para mais detalhes.
