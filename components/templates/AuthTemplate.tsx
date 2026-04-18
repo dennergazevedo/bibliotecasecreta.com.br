@@ -107,7 +107,7 @@ export function AuthTemplate() {
           {Array.from({ length: 14 }).map((_, i) => (
             <div
               key={i}
-              className="flex-1 bg-coffee-200 mx-[1px] rounded-t-sm"
+              className="flex-1 bg-coffee-200 mx-px rounded-t-sm"
               style={{ height: `${48 + ((i * 7) % 5) * 18}px` }}
             />
           ))}
@@ -125,7 +125,7 @@ export function AuthTemplate() {
               <br />
               <span className="italic text-coffee-400">literária pessoal</span>
             </h2>
-            <p className="text-sm text-coffee-500 leading-relaxed max-w-[280px]">
+            <p className="text-sm text-coffee-500 leading-relaxed max-w-70">
               Descubra livros que vão te transformar, organize sua estante
               virtual e receba recomendações com inteligência artificial.
             </p>
