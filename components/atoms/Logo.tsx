@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { BookOpen } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -9,7 +10,7 @@ interface LogoProps {
 export function Logo({ className, variant = "default" }: LogoProps) {
   const isLight = variant === "light"
   return (
-    <div className={cn("flex items-center gap-2.5", className)}>
+    <Link href="/" className={cn("flex items-center gap-2.5", className)}>
       <div
         className={cn(
           "flex items-center justify-center w-8 h-8 rounded-lg",
@@ -34,6 +35,6 @@ export function Logo({ className, variant = "default" }: LogoProps) {
           Secreta
         </span>
       </span>
-    </div>
+    </Link>
   )
 }
