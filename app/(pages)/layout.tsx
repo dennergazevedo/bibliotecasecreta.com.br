@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Playfair_Display, Lora } from "next/font/google"
+import { TopBar } from "@/components/atoms/top-bar"
 import "./globals.css"
 
 const playfair = Playfair_Display({
@@ -30,7 +31,10 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${playfair.variable} ${lora.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <TopBar />
+        {children}
+      </body>
     </html>
   )
 }
